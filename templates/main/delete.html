@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+{% load static  crispy_forms_tags %}
+
+{% block content %}
+
+     <div class="container py-4">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form|crispy}}
+
+                    
+                    <h1>Siz rostdan ham bu {{ object }} ni o'chirmoqchimisz?</h1>
+                    <button type="submit" class="btn btn-danger">Xa</button>
+                    <a href="{% url 'home' %}" class="btn btn-info">Yo'q</a>
+
+
+                    
+
+                  
+                    
+                    
+
+
+                </form>
+            </div>
+        </div>
+     </div>
+
+
+
+
+    
+{% endblock  %}

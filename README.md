@@ -1,1 +1,1 @@
-# api_project
+# generic_views

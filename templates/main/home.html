@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+     <div class="container py-4">
+        <div class="row">
+            <div class="col-11 offset-3, d-flex justify-content-around">
+
+            {% for post in object_list  %}
+
+                <div class="col-4">
+                    <div class="card" style="width: 18rem; ">
+                        <img src="{{ post.image.url }}" class="card-img-top" alt="{{post.name}}">
+                        <div class="card-body">
+                          <h5 class="card-title">{{post.name}}</h5>
+                          <p class="card-text">{{ post.body|truncatewords:'10'}}</p>
+                          <a href="{% url 'detail' pk=post.pk%}" class="btn btn-primary">Read more</a>
+                          <a href="{% url 'update' pk=post.pk%}" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></a>
+                          <a href="{% url 'delete' pk=post.pk%}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+                
+            {% endfor %}
+
+    
+
+            </div>
+            {% if page_obj.paginator.count >= 6 %}
+
+            <div class="pagination">
+                <ul>
+                  <!-- <li class="prev disabled"><a href="#">&lt;</a></li> -->
+                {% for page in page_obj.paginator.page_range %}
+                  <li class="{% if page == page_obj.number%}active{% endif %}"><a href="?page={{ page }}">{{ page }}</a></li>
+
+                {% endfor %} 
+
+                  <!-- <li class="next"><a href="#">&gt;</a></li> -->
+                 
+                </ul>
+            </div>
+
+            {% endif %}
+
+        </div>
+     </div>
+    
+{% endblock  %}
+
