@@ -26,23 +26,7 @@
     
 
             </div>
-            {% if page_obj.paginator.count >= 6 %}
-
-            <div class="pagination">
-                <ul>
-                  <!-- <li class="prev disabled"><a href="#">&lt;</a></li> -->
-                {% for page in page_obj.paginator.page_range %}
-                  <li class="{% if page == page_obj.number%}active{% endif %}"><a href="?page={{ page }}">{{ page }}</a></li>
-
-                {% endfor %} 
-
-                  <!-- <li class="next"><a href="#">&gt;</a></li> -->
-                 
-                </ul>
-            </div>
-
-            {% endif %}
-
+           
         </div>
      </div>
     
